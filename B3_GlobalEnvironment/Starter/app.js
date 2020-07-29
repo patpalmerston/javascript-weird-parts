@@ -26,11 +26,28 @@
 // waitThreeSeconds();
 // console.log('finished execution');
 
-var a = 2,
-    b = 3,
-    c = 4;
+// var a = 2,
+//     b = 3,
+//     c = 4;
 
-a = b = c;
-console.log(a);
-console.log(b);
-console.log(c);
+// a = b = c;
+// console.log(a);
+// console.log(b);
+// console.log(c);
+
+// var a = 0;
+// var b = false;
+// if (a == b) {
+//     console.log('equal');
+// } else {
+//     console.log('not equal');
+// }
+
+// Default Values
+
+function greet(name) {
+    name = name || 'Pat';
+    console.log(`Hello ${name}`);
+}
+
+greet();
