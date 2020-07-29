@@ -53,18 +53,46 @@
 // greet();
 
 //Objects Functions
-var person = new Object();
-person['firstname'] = 'Tony';
-person['lastname'] = 'Alicia';
+// var person = new Object();
+// person['firstname'] = 'Tony';
+// person['lastname'] = 'Alicia';
 
-var firstNameProperty = 'firstname';
-console.log(person);
-console.log(person[firstNameProperty]);
-console.log(person.firstname);
-console.log(person.lastname);
+// var firstNameProperty = 'firstname';
+// console.log(person);
+// console.log(person[firstNameProperty]);
+// console.log(person.firstname);
+// console.log(person.lastname);
 
-person.address = new Object();
-person.address.street = '1077 Crinella Dr.';
-person.address.city = 'Petaluma';
-person.address.state = 'California';
-console.log(person['address']['state']);
+// person.address = new Object();
+// person.address.street = '1077 Crinella Dr.';
+// person.address.city = 'Petaluma';
+// person.address.state = 'California';
+// console.log(person['address']['state']);
+
+//Object literals
+
+// var person = {
+//     firstname: 'Tony',
+//     lastname: 'Andrea',
+//     address: {
+//         street: '1044 Crinells',
+//         city: 'petal',
+//         state: 'Call',
+//     },
+// };
+
+// function greet(person) {
+//     console.log(`Hi ${person.firstname}`);
+// }
+
+// console.log(person);
+
+//JSON and Object Literals
+var objectLiteral = {
+    firstname: 'Mary',
+    isAProgrammer: true,
+};
+
+console.log(JSON.stringify(objectLiteral));
+var jsonValue = JSON.parse('{"firstname":"Mary","isAProgrammer":true}');
+console.log(jsonValue);
