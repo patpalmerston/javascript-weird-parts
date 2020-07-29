@@ -45,9 +45,26 @@
 
 // Default Values
 
-function greet(name) {
-    name = name || 'Pat';
-    console.log(`Hello ${name}`);
-}
+// function greet(name) {
+//     name = name || 'Pat';
+//     console.log(`Hello ${name}`);
+// }
 
-greet();
+// greet();
+
+//Objects Functions
+var person = new Object();
+person['firstname'] = 'Tony';
+person['lastname'] = 'Alicia';
+
+var firstNameProperty = 'firstname';
+console.log(person);
+console.log(person[firstNameProperty]);
+console.log(person.firstname);
+console.log(person.lastname);
+
+person.address = new Object();
+person.address.street = '1077 Crinella Dr.';
+person.address.city = 'Petaluma';
+person.address.state = 'California';
+console.log(person['address']['state']);
