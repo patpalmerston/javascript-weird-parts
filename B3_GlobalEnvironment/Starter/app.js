@@ -99,24 +99,59 @@
 
 // Functions are Objects
 
-function greet() {
-    console.log('hi');
-}
+// function greet() {
+//     console.log('hi');
+// }
 
-greet.language = 'english';
-console.log(greet);
+// greet.language = 'english';
+// console.log(greet);
 
-// function statements and expressions
-//statement that is a function declaration and can be hoisted
-greet('hoisted');
-function greet(a) {
-    console.log(a);
-}
+// // function statements and expressions
+// //statement that is a function declaration and can be hoisted
+// greet('hoisted');
+// function greet(a) {
+//     console.log(a);
+// }
 
-//expresson is a viariable that represents a function can not be hoisted
-const anonomysGreet = function (a) {
-    console.log(a);
-};
-anonomysGreet('cant be hoisted');
+// //expresson is a viariable that represents a function can not be hoisted
+// const anonomysGreet = function (a) {
+//     console.log(a);
+// };
+// anonomysGreet('cant be hoisted');
 
 // in the execution context, the stack stacks functions and variables first then runs the code down the stack. So the variable expression that holds the anonymous function is in memory but the function itself cant be run until after the single thread stack reaches that variable declaration.
+
+// By Value (Primitives)
+var a = 3;
+var b;
+
+b = a;
+a = 2;
+
+console.log(a);
+console.log(b);
+
+// by Reference (all objects (including functions))
+var c = { greeting: 'hi' };
+var d;
+
+d = c;
+c.greeting = 'hello'; // mutate
+console.log(c);
+console.log(d);
+
+// By value makes copies, By references uses pointers to the same object
+
+// by reference (even as function parameters)
+function changeGreeting(obj) {
+    obj.greeting = 'Hola'; // mutate
+}
+
+changeGreeting(d);
+console.log(c);
+console.log(d);
+
+// equals operator sets up new momeory space (new Address)
+c = { greeting: 'lets do this' };
+console.log(c);
+console.log(d);
