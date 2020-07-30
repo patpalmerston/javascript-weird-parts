@@ -88,11 +88,35 @@
 // console.log(person);
 
 //JSON and Object Literals
-var objectLiteral = {
-    firstname: 'Mary',
-    isAProgrammer: true,
-};
+// var objectLiteral = {
+//     firstname: 'Mary',
+//     isAProgrammer: true,
+// };
 
-console.log(JSON.stringify(objectLiteral));
-var jsonValue = JSON.parse('{"firstname":"Mary","isAProgrammer":true}');
-console.log(jsonValue);
+// console.log(JSON.stringify(objectLiteral));
+// var jsonValue = JSON.parse('{"firstname":"Mary","isAProgrammer":true}');
+// console.log(jsonValue);
+
+// Functions are Objects
+
+function greet() {
+    console.log('hi');
+}
+
+greet.language = 'english';
+console.log(greet);
+
+// function statements and expressions
+//statement that is a function declaration and can be hoisted
+greet('hoisted');
+function greet(a) {
+    console.log(a);
+}
+
+//expresson is a viariable that represents a function can not be hoisted
+const anonomysGreet = function (a) {
+    console.log(a);
+};
+anonomysGreet('cant be hoisted');
+
+// in the execution context, the stack stacks functions and variables first then runs the code down the stack. So the variable expression that holds the anonymous function is in memory but the function itself cant be run until after the single thread stack reaches that variable declaration.
