@@ -122,36 +122,67 @@
 // in the execution context, the stack stacks functions and variables first then runs the code down the stack. So the variable expression that holds the anonymous function is in memory but the function itself cant be run until after the single thread stack reaches that variable declaration.
 
 // By Value (Primitives)
-var a = 3;
-var b;
+// var a = 3;
+// var b;
 
-b = a;
-a = 2;
+// b = a;
+// a = 2;
 
-console.log(a);
-console.log(b);
+// console.log(a);
+// console.log(b);
 
 // by Reference (all objects (including functions))
-var c = { greeting: 'hi' };
-var d;
+// var c = { greeting: 'hi' };
+// var d;
 
-d = c;
-c.greeting = 'hello'; // mutate
-console.log(c);
-console.log(d);
+// d = c;
+// c.greeting = 'hello'; // mutate
+// console.log(c);
+// console.log(d);
 
 // By value makes copies, By references uses pointers to the same object
 
 // by reference (even as function parameters)
-function changeGreeting(obj) {
-    obj.greeting = 'Hola'; // mutate
-}
+// function changeGreeting(obj) {
+//     obj.greeting = 'Hola'; // mutate
+// }
 
-changeGreeting(d);
-console.log(c);
-console.log(d);
+// changeGreeting(d);
+// console.log(c);
+// console.log(d);
 
-// equals operator sets up new momeory space (new Address)
-c = { greeting: 'lets do this' };
-console.log(c);
-console.log(d);
+// // equals operator sets up new momeory space (new Address)
+// c = { greeting: 'lets do this' };
+// console.log(c);
+// console.log(d);
+
+// Objects functions and this
+var c = {
+    name: 'the c object',
+    log: function () {
+        var self = this;
+        (self.name = 'updated c object'), console.log(self);
+
+        var setname = function (newname) {
+            self.name = newname;
+        };
+        setname('updated again! The c object');
+        console.log(self);
+    },
+};
+c.log();
+// example using this key work and the side effects of global scope in methods inside objects, when using the 'this' key work the inner methods will attach to the global scope. To escape that side effect we create a reference variable to the this key word that is attached to the root of the parent object. Usually called "Self", from there we reference everything in the objects scope using the variable "self" that olds a reference to the parent object scope.
+// var c = {
+//     name: 'the c object',
+//     log: function () {
+//         // var self = this;
+//         (this.name = 'updated c object'), console.log(this);
+
+//         var setname = function (newname) {
+//             this.name = newname;
+//         };
+//         setname('updated again! The c object');
+//         console.log(this);
+//     },
+// };
+// c.log();
