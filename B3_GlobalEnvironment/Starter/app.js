@@ -186,3 +186,22 @@ c.log();
 //     },
 // };
 // c.log();
+
+// Array in JS can hold anything because it defines what is typed on the fly or "dynamic typing" for example we can hold one of each type and reference those type from the array itself
+
+var arr = [
+    1,
+    false,
+    {
+        name: 'pat',
+        address: '1077 Crinella',
+    },
+    function (name) {
+        var greeting = 'Hello ';
+        console.log(greeting + name);
+    },
+    'hello',
+];
+console.log(arr);
+// now access the function in the array and pass it the name from object two
+arr[3](arr[2].name);
