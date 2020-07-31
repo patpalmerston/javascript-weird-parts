@@ -205,3 +205,27 @@ var arr = [
 console.log(arr);
 // now access the function in the array and pass it the name from object two
 arr[3](arr[2].name);
+
+// Arguments
+function greet(firstname, lastname, language, ...other) {
+    language = language || 'es';
+
+    if (arguments.length === 0) {
+        console.log('missing parameters');
+        console.log('=====================');
+        return;
+    }
+    console.log(firstname);
+    console.log(lastname);
+    console.log(language);
+    console.log(arguments);
+    console.log('arg 0:', arguments[0]);
+    console.log(other);
+    console.log('=======================');
+}
+
+greet();
+greet('john');
+greet('john', 'doe');
+greet('john', 'doe', 'en');
+greet('john', 'doe', 'en', 'some', 'other', 'args');
