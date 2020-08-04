@@ -189,43 +189,72 @@ c.log();
 
 // Array in JS can hold anything because it defines what is typed on the fly or "dynamic typing" for example we can hold one of each type and reference those type from the array itself
 
-var arr = [
-    1,
-    false,
-    {
-        name: 'pat',
-        address: '1077 Crinella',
-    },
-    function (name) {
-        var greeting = 'Hello ';
-        console.log(greeting + name);
-    },
-    'hello',
-];
-console.log(arr);
-// now access the function in the array and pass it the name from object two
-arr[3](arr[2].name);
+// var arr = [
+//     1,
+//     false,
+//     {
+//         name: 'pat',
+//         address: '1077 Crinella',
+//     },
+//     function (name) {
+//         var greeting = 'Hello ';
+//         console.log(greeting + name);
+//     },
+//     'hello',
+// ];
+// console.log(arr);
+// // now access the function in the array and pass it the name from object two
+// arr[3](arr[2].name);
 
-// Arguments
-function greet(firstname, lastname, language, ...other) {
-    language = language || 'es';
+// // Arguments
+// function greet(firstname, lastname, language, ...other) {
+//     language = language || 'es';
 
-    if (arguments.length === 0) {
-        console.log('missing parameters');
-        console.log('=====================');
-        return;
-    }
-    console.log(firstname);
-    console.log(lastname);
-    console.log(language);
-    console.log(arguments);
-    console.log('arg 0:', arguments[0]);
-    console.log(other);
-    console.log('=======================');
+//     if (arguments.length === 0) {
+//         console.log('missing parameters');
+//         console.log('=====================');
+//         return;
+//     }
+//     console.log(firstname);
+//     console.log(lastname);
+//     console.log(language);
+//     console.log(arguments);
+//     console.log('arg 0:', arguments[0]);
+//     console.log(other);
+//     console.log('=======================');
+// }
+
+// greet();
+// greet('john');
+// greet('john', 'doe');
+// greet('john', 'doe', 'en');
+// greet('john', 'doe', 'en', 'some', 'other', 'args');
+
+//----Immediately Invoked Function Expressions or (IIFE)s
+
+// function statement
+function greet(name) {
+    console.log('Hello ' + name);
 }
+greet('greet');
 
-greet();
-greet('john');
-greet('john', 'doe');
-greet('john', 'doe', 'en');
-greet('john', 'doe', 'en', 'some', 'other', 'args');
+// function expression
+var greetFunc = function (name) {
+    console.log('Hello ' + name);
+};
+greetFunc('greetFunc');
+
+//iffe
+var greeting = (function greet(name) {
+    return 'Hello ' + name;
+})('Pat');
+console.log(greeting);
+
+//function object needs a name unless giving it parens as a function expression. This technique tricks the syntax parser other wise it will throw an error if the function has no name and is not a statement.
+
+var firstname = 'Pat';
+//function expression creates this object on the fly, it is an object and invokable
+(function (name) {
+    var greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+})(firstname); // can be invoked inside or outside of parens, either or
