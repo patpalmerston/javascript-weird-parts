@@ -271,3 +271,39 @@ function greet(whattosay) {
 // greet('Hi')('Pat');
 let sayHi = greet('Hi');
 sayHi('Pat');
+
+//closures pt 2
+function buildFunctions() {
+    var arr = [];
+    // function is not executed until the full scope is done, by that time i = 3 and is always 3 for the execution of the function, because the function is not executed until after the loop is finished and exits its own execution context
+    for (var i = 0; i < 3; i++) {
+        arr.push(function () {
+            console.log(i);
+        });
+    }
+    return arr;
+}
+var fs = buildFunctions();
+fs[0]();
+fs[1]();
+fs[2]();
+
+// same function with ES6 let
+function buildFunctions2() {
+    var arr = [];
+    // every time the loop runs it will execute the function because of the iffe
+    for (var i = 0; i < 3; i++) {
+        arr.push(
+            (function (j) {
+                return function () {
+                    console.log(j);
+                };
+            })(i)
+        );
+    }
+    return arr;
+}
+var fs2 = buildFunctions2();
+fs2[0]();
+fs2[1]();
+fs2[2]();
