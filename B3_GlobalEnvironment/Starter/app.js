@@ -157,20 +157,20 @@
 // console.log(d);
 
 // Objects functions and this
-var c = {
-    name: 'the c object',
-    log: function () {
-        var self = this;
-        (self.name = 'updated c object'), console.log(self);
+// var c = {
+//     name: 'the c object',
+//     log: function () {
+//         var self = this;
+//         (self.name = 'updated c object'), console.log(self);
 
-        var setname = function (newname) {
-            self.name = newname;
-        };
-        setname('updated again! The c object');
-        console.log(self);
-    },
-};
-c.log();
+//         var setname = function (newname) {
+//             self.name = newname;
+//         };
+//         setname('updated again! The c object');
+//         console.log(self);
+//     },
+// };
+// c.log();
 // example using this key work and the side effects of global scope in methods inside objects, when using the 'this' key work the inner methods will attach to the global scope. To escape that side effect we create a reference variable to the this key word that is attached to the root of the parent object. Usually called "Self", from there we reference everything in the objects scope using the variable "self" that olds a reference to the parent object scope.
 // var c = {
 //     name: 'the c object',
@@ -233,28 +233,41 @@ c.log();
 //----Immediately Invoked Function Expressions or (IIFE)s
 
 // function statement
-function greet(name) {
-    console.log('Hello ' + name);
-}
-greet('greet');
+// function greet(name) {
+//     console.log('Hello ' + name);
+// }
+// greet('greet');
 
-// function expression
-var greetFunc = function (name) {
-    console.log('Hello ' + name);
-};
-greetFunc('greetFunc');
+// // function expression
+// var greetFunc = function (name) {
+//     console.log('Hello ' + name);
+// };
+// greetFunc('greetFunc');
 
-//iffe
-var greeting = (function greet(name) {
-    return 'Hello ' + name;
-})('Pat');
-console.log(greeting);
+// //iffe
+// var greeting = (function greet(name) {
+//     return 'Hello ' + name;
+// })('Pat');
+// console.log(greeting);
 
 //function object needs a name unless giving it parens as a function expression. This technique tricks the syntax parser other wise it will throw an error if the function has no name and is not a statement.
 
-var firstname = 'Pat';
-//function expression creates this object on the fly, it is an object and invokable
-(function (name) {
-    var greeting = 'Hello';
-    console.log(greeting + ' ' + name);
-})(firstname); // can be invoked inside or outside of parens, either or
+// var firstname = 'Pat';
+// //function expression creates this object on the fly, it is an object and invokable
+// (function (name) {
+//     var greeting = 'Hello';
+//     console.log(greeting + ' ' + name);
+// })(firstname); // can be invoked inside or outside of parens, either or
+
+//Closures
+
+function greet(whattosay) {
+    return function (name) {
+        console.log(whattosay + ' ' + name);
+    };
+}
+
+// invoking a function that returns a function, then invoke the returned function
+// greet('Hi')('Pat');
+let sayHi = greet('Hi');
+sayHi('Pat');
