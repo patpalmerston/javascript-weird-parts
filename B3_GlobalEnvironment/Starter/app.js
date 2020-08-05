@@ -321,7 +321,7 @@ function makeGreeting(language) {
         }
     };
 }
-
+//taking advantage of closures to set the parameter values for different functions create from the same function with different execution contexts
 var greetEnglish = makeGreeting('en');
 var greetSpanish = makeGreeting('es');
 greetEnglish('lara', 'zil');
