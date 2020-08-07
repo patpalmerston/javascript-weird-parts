@@ -310,19 +310,65 @@
 
 //Function Factory
 
-function makeGreeting(language) {
-    return function (firstname, lastname) {
-        if (language === 'en') {
-            console.log('Hello ' + firstname + ' ' + lastname);
-        }
+// function makeGreeting(language) {
+//     return function (firstname, lastname) {
+//         if (language === 'en') {
+//             console.log('Hello ' + firstname + ' ' + lastname);
+//         }
 
-        if (language === 'es') {
-            console.log('Hola ' + firstname + ' ' + lastname);
-        }
-    };
-}
+//         if (language === 'es') {
+//             console.log('Hola ' + firstname + ' ' + lastname);
+//         }
+//     };
+// }
 //taking advantage of closures to set the parameter values for different functions create from the same function with different execution contexts
-var greetEnglish = makeGreeting('en');
-var greetSpanish = makeGreeting('es');
-greetEnglish('lara', 'zil');
-greetSpanish('mara', 'smil');
+// var greetEnglish = makeGreeting('en');
+// var greetSpanish = makeGreeting('es');
+// greetEnglish('lara', 'zil');
+// greetSpanish('mara', 'smil');
+
+// call() apply() bind()
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function () {
+        var fullname = this.firstname + ' ' + this.lastname;
+        return fullname;
+    },
+};
+
+var logName = function (lang1, lang2) {
+    console.log('Logged: ' + this.getFullName());
+    // you can add bind to the end of the funtion. since functions are objects you can use the dot operator to access the bind method that is available on all functions
+    console.log('Arguments: ' + lang1 + ' ' + lang2);
+    console.log('----------------');
+}.bind(person);
+// bind the function outside of object to the object as a method to that object
+//.bind() creates a copy of whatever function you call it on and whatever object you pass to that method now points to that objects reference
+
+var logPersonName = logName.bind(person);
+
+// logName();
+logPersonName('en');
+// logName('en');
+
+// .call() allows us to pass a this variable when calling the function. Slick way to bind the this keyword to a function made on the fly that interacts with a specific object
+logName.call(person, 'en', 'es');
+// .apply() does the same thing except it wants an array of parameters
+logName.apply(person, ['es', 'en']);
+
+// Function Borrowing
+var person2 = {
+    firstname: 'kel',
+    lastname: 'stuff',
+};
+// borrowing function from person object and placing it on the person 2 object
+console.log(person.getFullName.apply(person2));
+
+// function currying
+function multiply(a, b) {
+    return a * b;
+}
+// bind is permanently setting the first variable to 2
+var multiplyByTwo = multiply.bind(this, 2);
+console.log(multiplyByTwo(3));
