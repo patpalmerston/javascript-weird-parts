@@ -328,47 +328,93 @@
 // greetSpanish('mara', 'smil');
 
 // call() apply() bind()
-var person = {
-    firstname: 'John',
-    lastname: 'Doe',
-    getFullName: function () {
-        var fullname = this.firstname + ' ' + this.lastname;
-        return fullname;
-    },
-};
+// var person = {
+//     firstname: 'John',
+//     lastname: 'Doe',
+//     getFullName: function () {
+//         var fullname = this.firstname + ' ' + this.lastname;
+//         return fullname;
+//     },
+// };
 
-var logName = function (lang1, lang2) {
-    console.log('Logged: ' + this.getFullName());
-    // you can add bind to the end of the funtion. since functions are objects you can use the dot operator to access the bind method that is available on all functions
-    console.log('Arguments: ' + lang1 + ' ' + lang2);
-    console.log('----------------');
-}.bind(person);
-// bind the function outside of object to the object as a method to that object
-//.bind() creates a copy of whatever function you call it on and whatever object you pass to that method now points to that objects reference
+// var logName = function (lang1, lang2) {
+//     console.log('Logged: ' + this.getFullName());
+//     // you can add bind to the end of the funtion. since functions are objects you can use the dot operator to access the bind method that is available on all functions
+//     console.log('Arguments: ' + lang1 + ' ' + lang2);
+//     console.log('----------------');
+// }.bind(person);
+// // bind the function outside of object to the object as a method to that object
+// //.bind() creates a copy of whatever function you call it on and whatever object you pass to that method now points to that objects reference
 
-var logPersonName = logName.bind(person);
+// var logPersonName = logName.bind(person);
 
-// logName();
-logPersonName('en');
-// logName('en');
+// // logName();
+// logPersonName('en');
+// // logName('en');
 
-// .call() allows us to pass a this variable when calling the function. Slick way to bind the this keyword to a function made on the fly that interacts with a specific object
-logName.call(person, 'en', 'es');
-// .apply() does the same thing except it wants an array of parameters
-logName.apply(person, ['es', 'en']);
+// // .call() allows us to pass a this variable when calling the function. Slick way to bind the this keyword to a function made on the fly that interacts with a specific object
+// logName.call(person, 'en', 'es');
+// // .apply() does the same thing except it wants an array of parameters
+// logName.apply(person, ['es', 'en']);
 
-// Function Borrowing
-var person2 = {
-    firstname: 'kel',
-    lastname: 'stuff',
-};
-// borrowing function from person object and placing it on the person 2 object
-console.log(person.getFullName.apply(person2));
+// // Function Borrowing
+// var person2 = {
+//     firstname: 'kel',
+//     lastname: 'stuff',
+// };
+// // borrowing function from person object and placing it on the person 2 object
+// console.log(person.getFullName.apply(person2));
 
-// function currying
-function multiply(a, b) {
-    return a * b;
+// // function currying
+// function multiply(a, b) {
+//     return a * b;
+// }
+// // bind is permanently setting the first variable to 2, took a function, created a new function from it with some set parameters, thats called currying
+// var multiplyByTwo = multiply.bind(this, 2);
+// console.log(multiplyByTwo(3));
+
+//---------functional programming
+// take action against each item and add to new array
+function mapForEach(arr, fn) {
+    newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        newArr.push(fn(arr[i]));
+    }
+    return newArr;
 }
-// bind is permanently setting the first variable to 2
-var multiplyByTwo = multiply.bind(this, 2);
-console.log(multiplyByTwo(3));
+
+//lots of code but we can use functions to cut down on the amount of code used
+var arr1 = [1, 2, 3];
+// console.log(arr1);
+
+// This is the old version, with the new function we can change it up
+// var arr2 = [];
+// for (var i = 0; i < arr1.length; i++) {
+//     arr2.push(arr[i] * 2);
+// }
+
+var arr2 = mapForEach(arr1, (x) => {
+    return x * 2;
+});
+console.log(arr2);
+
+var arr3 = mapForEach(arr1, (x) => {
+    return x > 2;
+});
+console.log(arr3);
+
+var checkPastLimit = function (limiter, item) {
+    return item > limiter;
+};
+
+var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+console.log(arr4);
+
+var checkPastLimitSimplified = function (limiter) {
+    return function (limiter, item) {
+        return item > limiter;
+    }.bind(this, limiter);
+};
+
+var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
+console.log(arr5);
