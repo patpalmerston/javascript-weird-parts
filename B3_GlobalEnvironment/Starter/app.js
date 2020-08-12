@@ -419,4 +419,29 @@
 // var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
 // console.log(arr5);
 
-//
+// Object Oriented Java Script
+
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    getFullName: function () {
+        return this.firstname + ' ' + this.lastname;
+    },
+};
+
+var pat = {
+    firstname: 'Pat',
+    lastname: 'Palmerston',
+};
+
+// Never do this, dont assign the proto, for example only
+pat.__proto__ = person;
+console.log(pat.getFullName());
+console.log(pat.firstname);
+
+var payten = {
+    firstname: 'Payten',
+};
+
+payten.__proto__ = person;
+console.log(payten.getFullName());
