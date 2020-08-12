@@ -375,16 +375,16 @@
 
 //---------functional programming
 // take action against each item and add to new array
-function mapForEach(arr, fn) {
-    newArr = [];
-    for (var i = 0; i < arr.length; i++) {
-        newArr.push(fn(arr[i]));
-    }
-    return newArr;
-}
+// function mapForEach(arr, fn) {
+//     newArr = [];
+//     for (var i = 0; i < arr.length; i++) {
+//         newArr.push(fn(arr[i]));
+//     }
+//     return newArr;
+// }
 
 //lots of code but we can use functions to cut down on the amount of code used
-var arr1 = [1, 2, 3];
+// var arr1 = [1, 2, 3];
 // console.log(arr1);
 
 // This is the old version, with the new function we can change it up
@@ -393,28 +393,30 @@ var arr1 = [1, 2, 3];
 //     arr2.push(arr[i] * 2);
 // }
 
-var arr2 = mapForEach(arr1, (x) => {
-    return x * 2;
-});
-console.log(arr2);
+// var arr2 = mapForEach(arr1, (x) => {
+//     return x * 2;
+// });
+// console.log(arr2);
 
-var arr3 = mapForEach(arr1, (x) => {
-    return x > 2;
-});
-console.log(arr3);
+// var arr3 = mapForEach(arr1, (x) => {
+//     return x > 2;
+// });
+// console.log(arr3);
 
-var checkPastLimit = function (limiter, item) {
-    return item > limiter;
-};
+// var checkPastLimit = function (limiter, item) {
+//     return item > limiter;
+// };
 
-var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
-console.log(arr4);
+// var arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+// console.log(arr4);
 
-var checkPastLimitSimplified = function (limiter) {
-    return function (limiter, item) {
-        return item > limiter;
-    }.bind(this, limiter);
-};
+// var checkPastLimitSimplified = function (limiter) {
+//     return function (limiter, item) {
+//         return item > limiter;
+//     }.bind(this, limiter);
+// };
 
-var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
-console.log(arr5);
+// var arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
+// console.log(arr5);
+
+//
