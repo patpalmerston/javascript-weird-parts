@@ -421,27 +421,49 @@
 
 // Object Oriented Java Script
 
-var person = {
-    firstname: 'Default',
-    lastname: 'Default',
-    getFullName: function () {
-        return this.firstname + ' ' + this.lastname;
-    },
-};
+// var person = {
+//     firstname: 'Default',
+//     lastname: 'Default',
+//     getFullName: function () {
+//         return this.firstname + ' ' + this.lastname;
+//     },
+// };
 
-var pat = {
-    firstname: 'Pat',
-    lastname: 'Palmerston',
-};
+// var pat = {
+//     firstname: 'Pat',
+//     lastname: 'Palmerston',
+// };
 
 // Never do this, dont assign the proto, for example only
-pat.__proto__ = person;
-console.log(pat.getFullName());
-console.log(pat.firstname);
+// pat.__proto__ = person;
+// console.log(pat.getFullName());
+// console.log(pat.firstname);
 
-var payten = {
-    firstname: 'Payten',
-};
+// var payten = {
+//     firstname: 'Payten',
+// };
 
-payten.__proto__ = person;
-console.log(payten.getFullName());
+// payten.__proto__ = person;
+// console.log(payten.getFullName());
+
+// everything is an object
+// var a = {};
+// var b = function () {};
+// var c = [];
+
+// building Objects
+// function constructor creates objects
+function Person(firstname, lastname) {
+    console.log(this);
+    (this.firstname = firstname), (this.lastname = lastname);
+    console.log('The Person function is invoked');
+}
+// invokes function, add the 'new' key word to a function call and you get a new object from the fuction constructor
+var pat = new Person('Pat', 'Palmerston');
+
+// returns object
+console.log(pat);
+
+var payten = new Person('Payten', 'Palmerston');
+
+console.log(payten);
