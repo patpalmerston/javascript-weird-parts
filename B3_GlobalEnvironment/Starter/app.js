@@ -458,12 +458,15 @@ function Person(firstname, lastname) {
     (this.firstname = firstname), (this.lastname = lastname);
     console.log('The Person function is invoked');
 }
+// every function you create gets a prototype that starts as an empty object that you can build on to
+Person.prototype.getFullName = function () {
+    return this.firstname + ' ' + this.lastname;
+};
+
 // invokes function, add the 'new' key word to a function call and you get a new object from the fuction constructor
 var pat = new Person('Pat', 'Palmerston');
-
 // returns object
 console.log(pat);
 
 var payten = new Person('Payten', 'Palmerston');
-
-console.log(payten);
+console.log('full name', payten.getFullName());
