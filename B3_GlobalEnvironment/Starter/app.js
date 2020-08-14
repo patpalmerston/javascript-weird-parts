@@ -470,3 +470,10 @@ console.log(pat);
 
 var payten = new Person('Payten', 'Palmerston');
 console.log('full name', payten.getFullName());
+
+//adding to primitve object prototypes
+String.prototype.isLengthGreaterThan = function (limit) {
+    return this.length > limit;
+};
+
+console.log('pat'.isLengthGreaterThan(2));
