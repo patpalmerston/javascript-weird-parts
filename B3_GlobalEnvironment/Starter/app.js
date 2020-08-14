@@ -479,13 +479,45 @@
 // console.log('pat'.isLengthGreaterThan(2));
 
 // Arrays and For in
-Array.prototype.myCustomFeature = 'coo';
-var arr = ['john', 'pat', 'kel', 'pay', 'jack'];
-// dont use for in as you will loop all properties of the array object
-for (var pop in arr) {
-    console.log(pop, 'in arr', arr[pop]);
+// Array.prototype.myCustomFeature = 'coo';
+// var arr = ['john', 'pat', 'kel', 'pay', 'jack'];
+// // dont use for in as you will loop all properties of the array object
+// for (var pop in arr) {
+//     console.log(pop, 'in arr', arr[pop]);
+// }
+// // instead use a traditional for loop or for of loop to access the index of the array
+// for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
+// }
+
+// Object.create and pure prototyple inheritance
+
+// if using older browsers that dont support the create.object feature you can use a poly fill that checks to see if the browser had the object.create feature. If not you can create that feature and asign the prototype to the parent object
+
+if (!Object.create) {
+    Object.create = function (o) {
+        if (arguments.length > 1) {
+            throw new Error(
+                'Object.create implementation' +
+                    'only accepts the first parameter.'
+            );
+        }
+        function F() {}
+        F.prototype = o;
+        return new F();
+    };
 }
-// instead use a traditional for loop or for of loop to access the index of the array
-for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
-}
+
+var person = {
+    firstname: 'Default',
+    lastname: 'Default',
+    greet: function () {
+        return 'Hi ' + this.firstname;
+    },
+};
+
+var pat = Object.create(person);
+pat.firstname = 'Pat';
+pat.lastname = 'Palmerston';
+console.log(pat);
+console.log(pat.greet());
