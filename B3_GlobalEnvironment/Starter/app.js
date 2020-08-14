@@ -494,30 +494,61 @@
 
 // if using older browsers that dont support the create.object feature you can use a poly fill that checks to see if the browser had the object.create feature. If not you can create that feature and asign the prototype to the parent object
 
-if (!Object.create) {
-    Object.create = function (o) {
-        if (arguments.length > 1) {
-            throw new Error(
-                'Object.create implementation' +
-                    'only accepts the first parameter.'
-            );
-        }
-        function F() {}
-        F.prototype = o;
-        return new F();
-    };
+// if (!Object.create) {
+//     Object.create = function (o) {
+//         if (arguments.length > 1) {
+//             throw new Error(
+//                 'Object.create implementation' +
+//                     'only accepts the first parameter.'
+//             );
+//         }
+//         function F() {}
+//         F.prototype = o;
+//         return new F();
+//     };
+// }
+
+// var person = {
+//     firstname: 'Default',
+//     lastname: 'Default',
+//     greet: function () {
+//         return 'Hi ' + this.firstname;
+//     },
+// };
+
+// var pat = Object.create(person);
+// pat.firstname = 'Pat';
+// pat.lastname = 'Palmerston';
+// console.log(pat);
+// console.log(pat.greet());
+
+// ES6 Classes - new ways to set the prototype and class objects
+class Person {
+    constructor(firstname, lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    greet() {
+        return 'Hi' + this.firstname;
+    }
 }
 
-var person = {
-    firstname: 'Default',
-    lastname: 'Default',
-    greet: function () {
-        return 'Hi ' + this.firstname;
-    },
-};
-
-var pat = Object.create(person);
-pat.firstname = 'Pat';
-pat.lastname = 'Palmerston';
+var pat = new Person('Pat', 'Palmerston');
 console.log(pat);
-console.log(pat.greet());
+
+// now we set the prototype using a new key word
+
+class Pat extends Person {
+    constructor(firstname, lastname) {
+        super(firstname, lastname);
+    }
+
+    greet() {
+        return 'yo ' + this.firstname;
+    }
+}
+
+var newPat = new Pat('newPat', 'newPalmerston');
+console.log(newPat);
+console.log(newPat.greet());
