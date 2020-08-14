@@ -453,27 +453,39 @@
 
 // building Objects
 // function constructor creates objects
-function Person(firstname, lastname) {
-    console.log(this);
-    (this.firstname = firstname), (this.lastname = lastname);
-    console.log('The Person function is invoked');
+// function Person(firstname, lastname) {
+//     console.log(this);
+//     (this.firstname = firstname), (this.lastname = lastname);
+//     console.log('The Person function is invoked');
+// }
+// // every function you create gets a prototype that starts as an empty object that you can build on to
+// Person.prototype.getFullName = function () {
+//     return this.firstname + ' ' + this.lastname;
+// };
+
+// // invokes function, add the 'new' key word to a function call and you get a new object from the fuction constructor
+// var pat = new Person('Pat', 'Palmerston');
+// // returns object
+// console.log(pat);
+
+// var payten = new Person('Payten', 'Palmerston');
+// console.log('full name', payten.getFullName());
+
+// //adding to primitve object prototypes
+// String.prototype.isLengthGreaterThan = function (limit) {
+//     return this.length > limit;
+// };
+
+// console.log('pat'.isLengthGreaterThan(2));
+
+// Arrays and For in
+Array.prototype.myCustomFeature = 'coo';
+var arr = ['john', 'pat', 'kel', 'pay', 'jack'];
+// dont use for in as you will loop all properties of the array object
+for (var pop in arr) {
+    console.log(pop, 'in arr', arr[pop]);
 }
-// every function you create gets a prototype that starts as an empty object that you can build on to
-Person.prototype.getFullName = function () {
-    return this.firstname + ' ' + this.lastname;
-};
-
-// invokes function, add the 'new' key word to a function call and you get a new object from the fuction constructor
-var pat = new Person('Pat', 'Palmerston');
-// returns object
-console.log(pat);
-
-var payten = new Person('Payten', 'Palmerston');
-console.log('full name', payten.getFullName());
-
-//adding to primitve object prototypes
-String.prototype.isLengthGreaterThan = function (limit) {
-    return this.length > limit;
-};
-
-console.log('pat'.isLengthGreaterThan(2));
+// instead use a traditional for loop or for of loop to access the index of the array
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+}
