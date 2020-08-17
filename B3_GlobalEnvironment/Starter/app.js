@@ -523,45 +523,48 @@
 // console.log(pat.greet());
 
 // ES6 Classes - new ways to set the prototype and class objects
-class Person {
-    constructor(firstname, lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
+// class Person {
+//     constructor(firstname, lastname) {
+//         this.firstname = firstname;
+//         this.lastname = lastname;
+//     }
 
-    greet() {
-        return 'Hi' + this.firstname;
-    }
-}
+//     greet() {
+//         return 'Hi' + this.firstname;
+//     }
+// }
 
-var pat = new Person('Pat', 'Palmerston');
-console.log(pat);
+// var pat = new Person('Pat', 'Palmerston');
+// console.log(pat);
 
 // now we set the prototype using a new key word
 
-class Pat extends Person {
-    constructor(firstname, lastname) {
-        super(firstname, lastname);
-    }
+// class Pat extends Person {
+//     constructor(firstname, lastname) {
+//         super(firstname, lastname);
+//     }
 
-    greet() {
-        return 'yo ' + this.firstname;
-    }
-}
+//     greet() {
+//         return 'yo ' + this.firstname;
+//     }
+// }
 
-var newPat = new Pat('newPat', 'newPalmerston');
-console.log(newPat);
-console.log(newPat.greet());
+// var newPat = new Pat('newPat', 'newPalmerston');
+// console.log(newPat);
+// console.log(newPat.greet());
 
 // using Strict
-function logNewPerson() {
-    'use strict';
-    var person2;
-    persom2 = {};
-    console.log(persom2);
-}
+// function logNewPerson() {
+//     'use strict';
+//     var person2;
+//     persom2 = {};
+//     console.log(persom2);
+// }
 
-var person;
-persom = {};
-console.log(persom);
-logNewPerson();
+// var person;
+// persom = {};
+// console.log(persom);
+// logNewPerson();
+
+var q = $('ul.people li').addClass('newclass').removeClass('people');
+console.log(q);
