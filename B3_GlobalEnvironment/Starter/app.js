@@ -566,5 +566,9 @@
 // console.log(persom);
 // logNewPerson();
 
-var q = $('ul.people li').addClass('newclass').removeClass('people');
-console.log(q);
+// var q = $('ul.people li').addClass('newclass').removeClass('people');
+// console.log(q);
+
+// custom library
+var g = G$('John', 'Doe');
+console.log(g);
