@@ -552,3 +552,16 @@ class Pat extends Person {
 var newPat = new Pat('newPat', 'newPalmerston');
 console.log(newPat);
 console.log(newPat.greet());
+
+// using Strict
+function logNewPerson() {
+    'use strict';
+    var person2;
+    persom2 = {};
+    console.log(persom2);
+}
+
+var person;
+persom = {};
+console.log(persom);
+logNewPerson();
