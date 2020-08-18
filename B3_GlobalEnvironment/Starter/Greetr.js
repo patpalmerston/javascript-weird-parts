@@ -118,13 +118,17 @@
         this.firstName = firstName || '';
         this.lastName = lastName || '';
         this.language = language || 'en';
+
+        // call validate when initiating the object
+        self.validate();
     };
     // 3. all objects create from here have all methods created on the prototype property
     // any greetr function created will have the greet prototype
+
     // trick borrowed from jQuery so we don't have to use the 'new' keyword
     Greetr.init.prototype = Greetr.prototype;
 
-    //attach to global
+    //attach our greetr to the global object, and provide a shorthand '$G' for ease
     global.Greetr = global.G$ = Greetr;
 
     // when invoking pass global object and jquery
